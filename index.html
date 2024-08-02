@@ -13,7 +13,7 @@
             padding: 0;
             user-select: none;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         body {
@@ -38,7 +38,7 @@
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             transition: opacity 0.5s ease;
             z-index: 1;
             text-align: center;
@@ -61,11 +61,20 @@
             color: rgb(255, 255, 255);
             animation: fadeIn 2s forwards;
             position: relative;
+            top: 2vw;
             z-index: 1;
         }
 
+        @media (max-width: 768px) {
+            #name {
+                top: -1vw;
+            }
+        }
+
         #pos {
-            margin-top: 1%;
+            margin-top: 3%;
+            position: relative;
+            top: -4%;
             animation: fadeIn 2s forwards;
         }
 
@@ -74,19 +83,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            width: 150%;
             padding: 2px 0;
             position: relative;
-            top: -55%;
+            top: -14%;
             animation: fadeInPics 1s forwards;
+            z-index: -1;
         }
 
         .language-pic {
-            height: 60%;
+            height: 40%;
             width: auto;
             max-height: 100px;
             margin: 0 10px;
-            border-radius: 50px;
             opacity: 0;
             transform: translateY(-50px);
             animation: fadeInFromBottom 0.5s forwards;
@@ -101,6 +110,12 @@
             z-index: 1;
         }
 
+        @media (max-width: 768px) {
+            .social-buttons {
+                top: 4vw;
+            }
+        }
+
         .social-buttons a {
             margin: 0 5px;
             display: inline-block;
@@ -109,7 +124,6 @@
         .social-buttons img {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
             transition: opacity 0.3s;
         }
 
@@ -124,7 +138,7 @@
             padding: 20px;
             border-radius: 10px;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -138,24 +152,53 @@
         }
 
         .aboutContainer p {
+            height: auto;
             width: 40%;
             text-align: justify;
             text-justify: inter-word;
         }
 
+        @media (max-width: 768px) {
+            .aboutContainer p {
+                width: 80%;
+                font-size: 80%;
+            }
+        }
+
         .buttons {
+            display: flex;
+            flex-wrap: nowrap;
             justify-content: center;
             align-items: center;
-            position: fixed;
-            bottom: 35%;
-            left: 43.25%;
+            position: relative;
+            bottom: 38%;
             z-index: 2;
             animation: fadeIn 2s forwards;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease, flex-direction 0.5s ease;
+            flex-direction: row;
+        }
+
+        .buttons.column {
+            flex-direction: column;
+        }
+
+        .buttons .btn {
+            width: 100px;
+            height: 40px;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
         }
 
         .buttons.hidden {
-            transform: translateY(-550px);
+            transform: translateY(-570px);
+        }
+
+        .buttons.hidden1 {
+            flex-direction: row;
         }
 
         .btn.active {
@@ -220,7 +263,7 @@
 
         .carousel-caption {
             position: absolute;
-            bottom: 20px;
+            bottom: 5%;
             left: 0;
             right: 0;
             padding: 10px;
@@ -228,6 +271,41 @@
             color: white;
             text-align: center;
             border-radius: 5px;
+        }
+
+        @media (max-width: 510px) {
+            .buttons {
+                bottom: 42%;
+            }
+
+            .buttons.responsive {
+                transform: translateY(-250px) translateX(-150px);
+            }
+
+            .buttons.column {
+                flex-direction: column;
+            }
+
+            .buttons.responsive1 {
+                transform: translateY(-400px);
+                flex-direction: row;
+            }
+
+            .carousel-item img {
+                height: auto;
+            }
+
+            .carousel-caption {
+                bottom: -5%;
+            }
+
+            .carousel-caption h5 {
+                font-size: 0.8rem;
+            }
+
+            .carousel-caption p {
+                font-size: 0.6rem;
+            }
         }
 
         @keyframes fadeInFromBottom {
@@ -256,16 +334,16 @@
         <h4 id="pos" class="text-muted">Programmer | 3D Modeler</h4>
         <div class="social-buttons" id="socialButtons">
             <a href="https://www.facebook.com/rafaelperol" target="_blank">
-                <img src="https://i.pinimg.com/originals/d8/ff/30/d8ff3064a3067ac45a70f762f4977d90.png" alt="Facebook">
+                <img src="Assets/icons/facebook.png" alt="Facebook">
             </a>
             <a href="https://www.linkedin.com/in/rafael-jan-perol-5b12072b2/" target="_blank">
-                <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn">
+                <img src="Assets/icons/linkedin.png" alt="LinkedIn">
             </a>
         </div>
 
         <div class="languagePics">
             <img src="Assets/logos/java.png" alt="Java" class="language-pic">
-            <img src="Assets/logos/css.svg" alt="CSS" class="language-pic">
+            <img src="Assets/logos/css.png" alt="CSS" class="language-pic">
             <img src="Assets/logos/html.png" alt="HTML" class="language-pic">
             <img src="Assets/logos/js.png" alt="JavaScript" class="language-pic">
             <img src="Assets/logos/lua.png" alt="Lua" class="language-pic">
@@ -294,42 +372,42 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="Assets/works/spaceStation.png" class="d-block w-100" alt="Work 1">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption">
                         <h5 class="display-4">Space station render</h5>
                         <p>A Blender render of a project that was given to me by my college professor, I used different methods to create the objects and shapes in order to create the intended scene.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="Assets/works/schedsys.png" class="d-block w-100" alt="Work 2">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption">
                         <h5>P&B Dental Clinic Patient Scheduling and Record System</h5>
                         <p>A system that I developed for our clinic to easily schedule patients and view records on their checkups and operations. I used HTML, CSS, JavaScript, Php and Bootstrap to make the website. </p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="Assets/works/codeventure.png" class="d-block w-100" alt="Work 3">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption">
                         <h5>Codeventure</h5>
                         <p>A game developed by me and my capstone thesis group. My job being the main developer was to add objects and program it to function, the language used was C# and I also used an online database for the save and load script.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="Assets/works/beach.png" class="d-block w-100" alt="Work 4">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption">
                         <h5>Beach</h5>
                         <p>An area from a game that I am developing showcasing imports from Blender and the use of Roblox for the terrain creation.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="Assets/works/shipHangar.png" class="d-block w-100" alt="Work 5">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption">
                         <h5>Ship hangar</h5>
                         <p>The area from one of my games where players will be seen. I developed it using the combination of Blender and Roblox for the creation of the 3D models and also Lua for the scripting of every objects that can be interacted by the players.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="Assets/works/valkyrie.png" class="d-block w-100" alt="Work 6">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption">
                         <h5>Valkyrie</h5>
                         <p>My latest creation, showcasing my imports from Blender and using it for most of the building that can be seen in the picture.</p>
                     </div>
@@ -369,7 +447,9 @@
             document.getElementById('detailsContainer').style.opacity = '1';
             document.getElementById('aboutMe').style.opacity = '0';
             document.getElementById('works').style.opacity = '0';
-            document.getElementById('buttonsContainer').classList.remove('hidden');
+            
+            const buttonsContainer = document.getElementById('buttonsContainer');
+            buttonsContainer.classList.remove('hidden', 'responsive', 'column', 'responsive1');
             document.getElementById('socialButtons').classList.remove('disabled');
             removeActiveClass();
         }
@@ -378,7 +458,10 @@
             document.getElementById('detailsContainer').style.opacity = '0';
             document.getElementById('aboutMe').style.opacity = '1';
             document.getElementById('works').style.opacity = '0';
-            document.getElementById('buttonsContainer').classList.add('hidden');
+            
+            const buttonsContainer = document.getElementById('buttonsContainer');
+            buttonsContainer.classList.remove('responsive1');
+            buttonsContainer.classList.add('hidden', 'hidden1', 'responsive', 'column');
             document.getElementById('socialButtons').classList.add('disabled');
             removeActiveClass();
             document.querySelector('.buttons .btn:nth-child(2)').classList.add('active');
@@ -388,7 +471,9 @@
             document.getElementById('detailsContainer').style.opacity = '0';
             document.getElementById('aboutMe').style.opacity = '0';
             document.getElementById('works').style.opacity = '1';
-            document.getElementById('buttonsContainer').classList.add('hidden');
+            
+            const buttonsContainer = document.getElementById('buttonsContainer');
+            buttonsContainer.classList.add('hidden', 'responsive1');
             document.getElementById('socialButtons').classList.add('disabled');
             removeActiveClass();
             document.querySelector('.buttons .btn:nth-child(3)').classList.add('active');
