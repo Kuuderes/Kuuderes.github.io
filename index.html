@@ -14,6 +14,7 @@
             user-select: none;
             height: 100%;
             overflow: hidden;
+            background: radial-gradient(ellipse at center, #0d1d31 0%, #0c0d13 40%);
         }
 
         body {
@@ -49,12 +50,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
+            width: 800px;
             height: auto;
             z-index: -1;
         }
 
         #name {
+            font-weight: bold;
+            text-transform: uppercase;
             display: flex;
             justify-content: center;
             margin-top: 3%;
@@ -80,6 +83,7 @@
 
         .languagePics {
             background-color: rgb(42, 42, 42);
+            background: radial-gradient(ellipse at center, #0d1d31 0%, #0c0d13 40%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -149,6 +153,7 @@
             position: absolute;
             top: 0;
             left: 0;
+            background: radial-gradient(ellipse at center, #0d1d31 0%, #0c0d13 100%);
         }
 
         .aboutContainer p {
@@ -214,6 +219,10 @@
             clip-path: polygon(0 25%, 100% 0, 100% 80%, 0 100%, 0 100%);
         }
 
+        .fadeIn {
+            animation: fadeIn 5s forwards;
+        }
+
         .language-pic:nth-child(1) {
             animation-delay: 0.5s;
         }
@@ -251,6 +260,7 @@
         }
 
         .contacts {
+            text-transform: uppercase;
             position: relative;
             top: 28%;
         }
@@ -361,7 +371,7 @@
     <div class="aboutContainer" id="aboutMe">
         <img id="myPic" src="Assets/pic.jpg" alt="me :)">
         <h2 class="display-1">About Me</h2>
-        <p>I'm a graduate in STI with a bachelor's degree in information technology. I have gathered experience in software development throughout my senior high school and college years, mostly in web development using HTML, CSS, and JavaScript. 
+        <p>I'm a graduate in STI with a Bachelor's Degree in Information Technology. I have gathered experience in software development throughout my senior high school and college years, mostly in web development using HTML, CSS, and JavaScript. 
             I also have experience in game development utilizing Lua where I started creating projects in an online gaming platform called Roblox starting from 2013 until today.</p>
         <p>I also have background experience in 3D Modeling using Blender for my projects in game development, my experience abled me to create both low poly and high poly 3D models depending on the needs of the project.</p>
     </div>
@@ -447,6 +457,9 @@
             document.getElementById('detailsContainer').style.opacity = '1';
             document.getElementById('aboutMe').style.opacity = '0';
             document.getElementById('works').style.opacity = '0';
+
+            document.getElementById('aboutMe').classList.remove('fadeIn');
+            document.getElementById('works').classList.remove('fadeIn');
             
             const buttonsContainer = document.getElementById('buttonsContainer');
             buttonsContainer.classList.remove('hidden', 'responsive', 'column', 'responsive1');
@@ -459,6 +472,9 @@
             document.getElementById('aboutMe').style.opacity = '1';
             document.getElementById('works').style.opacity = '0';
             
+            document.getElementById('aboutMe').classList.add('fadeIn');
+            document.getElementById('works').classList.remove('fadeIn');
+
             const buttonsContainer = document.getElementById('buttonsContainer');
             buttonsContainer.classList.remove('responsive1');
             buttonsContainer.classList.add('hidden', 'hidden1', 'responsive', 'column');
