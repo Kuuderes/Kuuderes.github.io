@@ -198,12 +198,16 @@
             font-size: 16px;
         }
 
-        .buttons.hidden {
-            transform: translateY(-570px);
+        .buttons.side {
+            transform: translateX(-180px) translateY(-250px);
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
         }
 
-        .buttons.hidden1 {
-            flex-direction: row;
+        .buttons.up {
+            transform: translateY(-31vw);
+            transition: transform 0.5s ease;
         }
 
         .btn.active {
@@ -261,8 +265,15 @@
 
         .contacts {
             text-transform: uppercase;
-            position: relative;
-            top: 28%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
         }
 
         .carousel-item img {
@@ -283,6 +294,12 @@
             border-radius: 5px;
         }
 
+        @media (max-width: 768px) {
+            .contacts {
+                font-size: 14px;
+            }
+        }
+
         @media (max-width: 510px) {
             .buttons {
                 bottom: 42%;
@@ -296,8 +313,8 @@
                 flex-direction: column;
             }
 
-            .buttons.responsive1 {
-                transform: translateY(-400px);
+            .buttons.up {
+                transform: translateY(-35vh);
                 flex-direction: row;
             }
 
@@ -460,24 +477,25 @@
 
             document.getElementById('aboutMe').classList.remove('fadeIn');
             document.getElementById('works').classList.remove('fadeIn');
-            
+
             const buttonsContainer = document.getElementById('buttonsContainer');
-            buttonsContainer.classList.remove('hidden', 'responsive', 'column', 'responsive1');
+            buttonsContainer.classList.remove('side', 'up'); // Remove both classes
             document.getElementById('socialButtons').classList.remove('disabled');
             removeActiveClass();
         }
+
 
         function showAboutMe() {
             document.getElementById('detailsContainer').style.opacity = '0';
             document.getElementById('aboutMe').style.opacity = '1';
             document.getElementById('works').style.opacity = '0';
-            
+
             document.getElementById('aboutMe').classList.add('fadeIn');
             document.getElementById('works').classList.remove('fadeIn');
 
             const buttonsContainer = document.getElementById('buttonsContainer');
-            buttonsContainer.classList.remove('responsive1');
-            buttonsContainer.classList.add('hidden', 'hidden1', 'responsive', 'column');
+            buttonsContainer.classList.remove('up');
+            buttonsContainer.classList.add('side');
             document.getElementById('socialButtons').classList.add('disabled');
             removeActiveClass();
             document.querySelector('.buttons .btn:nth-child(2)').classList.add('active');
@@ -487,9 +505,10 @@
             document.getElementById('detailsContainer').style.opacity = '0';
             document.getElementById('aboutMe').style.opacity = '0';
             document.getElementById('works').style.opacity = '1';
-            
+
             const buttonsContainer = document.getElementById('buttonsContainer');
-            buttonsContainer.classList.add('hidden', 'responsive1');
+            buttonsContainer.classList.remove('side');
+            buttonsContainer.classList.add('up');
             document.getElementById('socialButtons').classList.add('disabled');
             removeActiveClass();
             document.querySelector('.buttons .btn:nth-child(3)').classList.add('active');
